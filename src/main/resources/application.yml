@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: exemplo
+  profiles:
+    active: default
+  config:
+    import: optional:configserver:http://localhost:8888
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+exemplo:
+  teste:
+    variavel-do-application: foi
