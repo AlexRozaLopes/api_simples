@@ -1,9 +1,10 @@
 package com.example.api_simples.model;
 
 import lombok.Data;
-import org.hibernate.tuple.GenerationTiming;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.UUID;
 
@@ -12,7 +13,11 @@ import java.util.UUID;
 public class BookModel {
 
     @Id
-    @GeneratedUuidValue( timing = GenerationTiming.INSERT )
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
     private UUID id;
     private String title;
 
