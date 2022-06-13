@@ -6,12 +6,13 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Data
-public class BookModel {
+public class PersonModel {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -20,10 +21,9 @@ public class BookModel {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     private UUID id;
-    private String title;
+    private String name;
 
-    @ManyToOne
-    private PersonModel author;
-
+    @OneToMany(mappedBy = "author")
+    private List<BookModel> books;
 
 }
